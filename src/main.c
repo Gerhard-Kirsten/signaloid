@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <uxhw.h>
 #include <stdint.h>
+#include <math.h>
 
 // Function prototypes
 double calculateAirDensity(double temperatureC, double pressurePa, double humidity);
