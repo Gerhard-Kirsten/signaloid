@@ -5,7 +5,7 @@
 int
 main(int argc, char *  argv[])
 {
-	double b, c;
+	double c;
 
 	double a, samples[] = {0.91, 0.91, 0.92, 0.92, 0.99, 1.2, 1.3, 1.4, 1.5, 1.5};
     
@@ -13,6 +13,11 @@ main(int argc, char *  argv[])
 
   	 printf("a = %lf\n", a);
 
+	double b, samples2[] = {11,12,11,13,15,13,17,17,17,19,12,12,12,12,12};
+    
+   	 a = UxHwDoubleDistFromSamples(samples2, sizeof(samples2)/sizeof(double));
+
+  	 printf("b = %lf\n", b);
 
 	b = UxHwDoubleUniformDist(10.0, 20.0);
 	printf("b = %lf\n", b);
