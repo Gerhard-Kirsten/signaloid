@@ -5,14 +5,14 @@
 int
 main(int argc, char *  argv[])
 {
-	double	a, b, c;
+	double b, c;
 
 
 	double a, samples[] = {90, 120, 96, 20, 99, 102, 112, 68, 90, 109};
     
-    a = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
+   	 a = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
 
-    printf("a = %lf\n", a);
+  	 printf("a = %lf\n", a);
 
 
 	b = UxHwDoubleUniformDist(10.0, 20.0);
