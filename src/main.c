@@ -12,11 +12,10 @@ main(int argc, char *  argv[])
    	 a = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
 
   	 printf("a = %lf\n", a);
+
+	b = UxHwDoubleWeibullDist(1.0, 1.5);
+   	 printf("b = %lf\n", value);
     
-   	 b = UxHwDoubleLognormalDist(10,20);
-
-  	 printf("b = %lf\n", b);
-
 	c = (a+b)/(a-b);
 	printf("c = %lf\n", c);
 
