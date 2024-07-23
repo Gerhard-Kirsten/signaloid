@@ -14,7 +14,7 @@ main(int argc, char *  argv[])
   	 printf("a = %lf\n", a);
 
 	b = UxHwDoubleWeibullDist(1.0, 1.5);
-   	 printf("b = %lf\n", value);
+   	 printf("b = %lf\n", b);
     
 	c = (a+b)/(a-b);
 	printf("c = %lf\n", c);
