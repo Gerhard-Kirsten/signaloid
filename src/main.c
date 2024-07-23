@@ -15,12 +15,9 @@ main(int argc, char *  argv[])
 
 	double b, samples2[] = {11,12,11,13,15,13,17,17,17,19,12,12,12,12,12};
     
-   	 a = UxHwDoubleDistFromSamples(samples2, sizeof(samples2)/sizeof(double));
+   	 b = UxHwDoubleDistFromSamples(samples2, sizeof(samples2)/sizeof(double));
 
   	 printf("b = %lf\n", b);
-
-	b = UxHwDoubleUniformDist(10.0, 20.0);
-	printf("b = %lf\n", b);
 
 	c = (a+b)/(a-b);
 	printf("c = %lf\n", c);
