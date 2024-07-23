@@ -8,11 +8,11 @@ main(int argc, char *  argv[])
 	double	a, b, c;
 
 
-	    double  value, samples[] = {90, 120, 96, 20, 99, 102, 112, 68, 90, 109};
+	samples[] = {90, 120, 96, 20, 99, 102, 112, 68, 90, 109};
     
     a = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
 
-    printf("a = %lf\n", value);
+    printf("a = %lf\n", a);
 
 
 	b = UxHwDoubleUniformDist(10.0, 20.0);
