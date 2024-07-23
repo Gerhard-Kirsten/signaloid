@@ -10,14 +10,10 @@ main(int argc, char *  argv[])
 
 	    double  value, samples[] = {90, 120, 96, 20, 99, 102, 112, 68, 90, 109};
     
-    value = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
+    a = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
 
-    a = fopen("sd0/uxString.txt", "w+");
-    fprintf(a, "value = %lf\n", value);
-    printf("value = %lf\n", value);
+    printf("a = %lf\n", value);
 
-	#a = UxHwDoubleUniformDist(0.5, 1.0);
-	#printf("a = %lf\n", a);
 
 	b = UxHwDoubleUniformDist(10.0, 20.0);
 	printf("b = %lf\n", b);
