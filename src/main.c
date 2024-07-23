@@ -35,7 +35,7 @@ int main() {
     printf("Calculated Air Density: %lf kg/m³\n", airDensity);
 
     // Total Pressure (totalPressure)
-   double totalPressure = UxHwDoubleUniformDist(101800,102200);
+   double totalPressure = UxHwDoubleUniformDist(103000,104000);
 	printf("Total Pressure = %lf\n", totalPressure);
 
 	
