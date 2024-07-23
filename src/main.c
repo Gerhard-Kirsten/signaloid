@@ -26,8 +26,11 @@ int main() {
     pressurePa = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double)); // Pressure in Pa
 
 	printf("Pressure: %lf Pa\n", pressurePa);
+
+
+	 double  humidity, samplesHum[] = {87, 94, 82, 82, 88, 88, 94, 88, 94, 94, 94, 94, 100, 94, 88, 88, 88, 88, 94, 88, 88, 88, 77, 82, 88, 82, 81, 88, 88, 88, 82, 94, 94, 94, 88, 88, 72, 72, 77, 72, 72, 82, 82, 82, 88, 88, 94, 85, 88, 88, 82, 88, 94, 94, 100, 94, 88, 88, 88, 88, 83, 77, 77, 88, 88, 88, 88, 88, 72, 82, 83, 82, 82, 82, 82, 82, 94, 88, 94, 88, 88, 88, 88, 88, 77, 77, 77, 72, 72, 72, 82, 82, 82, 82, 94, 94, 94, 88, 94, 88, 88, 88, 88, 82, 94, 94, 88, 77, 76, 87, 94, 82, 82, 82, 88, 82, 88, 82, 88, 76, 76, 94, 94, 94, 93, 87, 87, 93, 76, 82, 82, 88, 88, 77, 77, 77, 77, 82, 82, 88, 88, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 87, 82, 77, 72, 59, 55, 68, 63, 63, 67, 72, 72, 77, 82, 82, 88, 67, 77, 88, 88, 88, 87, 100, 88, 94, 94, 88, 88, 82, 77, 82, 88, 82, 88, 88, 88, 94, 94, 88, 94};
 	
-    double humidity = UxHwDoubleUniformDist(70,90); // Humidity in percentage
+       double humidity = UxHwDoubleDistFromSamples(samplesHum, sizeof(samplesHum)/sizeof(double)); // Humidity in percentage
 
 	printf("Humidity: %lf Precentage\n", humidity);
 
