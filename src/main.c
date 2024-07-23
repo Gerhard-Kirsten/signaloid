@@ -35,7 +35,7 @@ int main() {
     printf("Calculated Air Density: %lf kg/m³\n", airDensity);
 
     // Total Pressure (totalPressure)
-   double totalPressure = UxHwDoubleUniformDist(1018,1022);
+   double totalPressure = UxHwDoubleUniformDist(101800,102200);
 	printf("Total Pressure = %lf\n", totalPressure);
 
 	
@@ -61,9 +61,9 @@ int main() {
 // Wind Speed as measure by a Pitot tube
 
 double calculateWindSpeed(double totalPressure, double staticPressure, double density) {
-    // Convert pressures from hPa to Pa
-    double totalPressurePa = totalPressure * 100;
-    double staticPressurePa = staticPressure * 100;
+  
+    double totalPressurePa = totalPressure ;
+    double staticPressurePa = staticPressure ;
     
     // Calculate dynamic pressure
     double dynamicPressure = totalPressurePa - staticPressurePa;
