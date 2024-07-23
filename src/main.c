@@ -5,6 +5,7 @@
 
 // Function prototypes
 double calculateAirDensity(double temperatureC, double pressurePa, double humidity);
+double calculateWindSpeed(double totalPressure, double staticPressure, double density);
 
 int main() {
 
