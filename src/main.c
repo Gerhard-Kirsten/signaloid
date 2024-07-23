@@ -7,7 +7,7 @@ main(int argc, char *  argv[])
 {
 	double b, c;
 
-	double a, samples[] = {90/100, 91/100, 92/100, 92/100, 93/100, 95/100, 96/100, 91/100, 93/100, 0.95, 0.99, 1.2, 1.3, 1.4, 1.5, 1.5};
+	double a, samples[] = {0.91, 0.91, 0.92, 0.92, 0.99, 1.2, 1.3, 1.4, 1.5, 1.5};
     
    	 a = UxHwDoubleDistFromSamples(samples, sizeof(samples)/sizeof(double));
 
