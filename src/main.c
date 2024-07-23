@@ -13,7 +13,7 @@ main(int argc, char *  argv[])
 
   	 printf("a = %lf\n", a);
     
-   	 b = UxHwDoubleNormalDist(10,20);
+   	 b = UxHwDoubleLognormalDist(10,20);
 
   	 printf("b = %lf\n", b);
 
