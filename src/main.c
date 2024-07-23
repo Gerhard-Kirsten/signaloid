@@ -7,7 +7,14 @@
 double calculateAirDensity(double temperatureC, double pressurePa, double humidity);
 
 int main() {
-    double temperatureC = UxHwDoubleUniformDist(20,30); // Temperature in Celsius
+
+
+
+
+	double  temperatureC, samplesTemp[] = {10, 10, 11, 11, 11, 11, 11, 11, 11, 10, 11, 12, 12, 12, 13, 13, 14, 14, 14, 14, 14, 13, 14, 13, 13, 13, 12.9, 13, 13, 13, 13, 13, 13, 13, 14, 15, 17, 17, 16, 16, 16, 15, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 15, 15, 13, 15, 15, 15, 15, 15, 17, 17, 17, 14, 13, 14, 13, 13, 14, 13, 13.3, 13, 13, 13, 13, 13, 12, 13, 12, 13, 13, 13, 13, 14, 15, 15, 15, 15, 14, 14, 13, 13, 13, 12, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 11, 11, 12, 14, 11, 10, 10, 12, 12, 10, 11, 11, 11, 11, 11, 11, 10, 9, 9, 9, 8, 9, 9, 8, 11, 11, 12, 11, 14, 15, 15, 15, 15, 14, 14, 13, 13, 12, 12, 12, 11, 10, 10, 11, 10, 10, 10, 10, 10, 11, 13, 14, 16, 17, 16, 15, 15, 15, 14, 14, 12, 12, 12, 12, 13, 12, 12, 12, 11, 10, 9, 11, 11, 11, 12, 13, 15, 16, 16, 14, 15, 14, 14, 13, 12, 12, 13, 12};
+    
+  temperatureC = UxHwDoubleDistFromSamples(samplesTemp, sizeof(samplesTemp)/sizeof(double)); // // Temperature in Celsius
+
 
 	printf("Temperature: %lf celcius\n", temperatureC);
 
