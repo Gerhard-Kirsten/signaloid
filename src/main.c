@@ -3,34 +3,6 @@
 #include <stdint.h>
 #include <uncertain.h>
 
-double empiricalTaylorFactorValues[] = {
-						3.2,
-						3.9,
-						4.1,
-						3.2,
-						3.8,
-						3.8,
-						2.1,
-						3.0,
-						1.9,
-						3.9,
-						2.3,
-						2.2,
-						3.2,
-						2.2,
-						3.9,
-						2.2,
-						1.9,
-						3.2,
-						3.9,
-						3.1,
-					};
-
-	*M		= libUncertainDoubleDistFromSamples(
-								empiricalTaylorFactorValues,
-								sizeof(empiricalTaylorFactorValues)/sizeof(double)
-							);
-
 int
 main(int argc, char *  argv[])
 {
