@@ -19,7 +19,7 @@ int main() {
 
           temperatureC = UxHwDoubleDistFromSamples(samplesTemp, sizeof(samplesTemp) / sizeof(double));  // // Temperature in Celsius
 
-          printf("Temperature: %lf celcius\n", temperatureC);
+          // printf("Temperature: %lf celcius\n", temperatureC);
 
           double pressurePa,
               samples[] = {101700, 101700, 101600, 101500, 101400, 101200, 101100, 101000, 101000, 100900, 100900, 100800, 100900, 100800, 100800,
@@ -38,7 +38,7 @@ int main() {
 
           pressurePa = UxHwDoubleDistFromSamples(samples, sizeof(samples) / sizeof(double));  // Pressure in Pa
 
-          printf("Pressure: %lf Pa\n", pressurePa);
+          // printf("Pressure: %lf Pa\n", pressurePa);
 
           double humidity,
               samplesHum[] = {87, 94, 82, 82, 88, 88, 94,  88, 94, 94, 94, 94, 100, 94, 88, 88, 88, 88, 94, 88, 88, 88, 77, 82, 88, 82, 81,  88,
@@ -51,22 +51,22 @@ int main() {
 
           humidity = UxHwDoubleDistFromSamples(samplesHum, sizeof(samplesHum) / sizeof(double));  // Humidity in percentage
 
-          printf("Humidity: %lf Precentage\n", humidity);
+          // printf("Humidity: %lf Precentage\n", humidity);
 
           double airDensity = calculateAirDensity(temperatureC, pressurePa, humidity);
-          printf("Calculated Air Density: %lf kg/m³\n", airDensity);
+          printf("Air Density (Computed from Temp, Hum & Press): %lf kg/m³\n", airDensity);
 
           // Total Pressure (totalPressure)
           double totalPressure = UxHwDoubleUniformDist(104200, 104400);
-          printf("Total Pressure = %lf\n", totalPressure);
+         // printf("Total Pressure = %lf Pa \n", totalPressure);
 
           // Air velocity (V) in m/s
           double V = calculateWindSpeed(totalPressure, pressurePa, airDensity);
-          printf("V = %lf\n", V);
+          printf("V (Computed via Pitot Tube) = %lf m/s \n", V);
 
           // Coefficient of lift (CL)
           double CL = UxHwDoubleUniformDist(1.1, 1.3);
-          printf("CL = %lf\n", CL);
+          //printf("CL = %lf \n", CL);
 
           // Wing area (A) in m^2 (assumed to be known precisely)
           double A = 10.0;
