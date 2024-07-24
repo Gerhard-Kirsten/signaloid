@@ -48,8 +48,8 @@ $$
 - **Data Source:** Distributions are formed based on the empirical data for Temperature, pressure, and humidity from the Cape Town weather service (hourly data for July).
 - **Wing Area ($A$):** Fixed at $10.0$ m².
 - **Coefficient of Lift ($C_L$):** Uniform distribution between $1.1$ and $1.3$.
-- **Total Pressure:** Uniform distribution between $1.1$ and $1.3$.
-- **Measurement Uncertainties:** Handled using sample distributions.
+- **Static Pressure:** Taken to be the same distribution as $p_d$ above coming from the empirical data.
+- **Total Pressure:** Uniform distribution between $104200$ and $104400$.
 - **Elevation Effects:** Not considered.
 - **Airfoil Geometry:** Implicitly accounted for in $C_L$.
 
