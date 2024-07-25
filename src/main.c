@@ -3,6 +3,35 @@
 #include <stdio.h>
 #include <uxhw.h>
 
+/*
+ * Airfoil Lift Generation Model
+ * 
+ * This program models the lift generation of an airfoil using the Bernoulli equation and other physical principles.
+ * It considers uncertainties in ambient temperature, humidity, and static air pressure to compute air density as a probability distribution.
+ * The air density distribution is then used to compute the wind speed as a probability distribution using the Pitot Tube formula.
+ * These distributions are used to compute the lift force as a probability distribution.
+ * 
+ * Lift Force Equation:
+ * L = 0.5 * ρ * V^2 * C_L * A
+ * where:
+ * - ρ: Air density (kg/m³)
+ * - V: Air velocity (m/s)
+ * - C_L: Coefficient of lift (dimensionless)
+ * - A: Wing area (m²)
+ * 
+ * Air Density Calculation:
+ * ρ = (p_d / (R_d * T)) + (e / (R_v * T))
+ * where:
+ * - T: Temperature in Kelvin
+ * - p_d: Partial pressure of dry air (Pa)
+ * - e: Actual vapor pressure (Pa)
+ * - R_d: Specific gas constant for dry air (287.05 J/(kg·K))
+ * - R_v: Specific gas constant for water vapor (461.5 J/(kg·K))
+ * 
+ * Wind Speed Calculation:
+ * V = sqrt((2 * (total pressure - static pressure)) / ρ)
+ */
+
 // Function prototypes
 double calculateAirDensity(double temperatureC, double pressurePa, double humidity);
 double calculateWindSpeed(double totalPressure, double staticPressure, double density);
@@ -68,32 +97,28 @@ int main() {
      return 0;
 }
 
-// Calculate wind speed using a Pitot tube
+// Function to calculate wind speed using the Pitot Tube formula
 double calculateWindSpeed(double totalPressure, double staticPressure, double density) {
-     double dynamicPressure = totalPressure - staticPressure;
-     double windSpeed = sqrt((2 * dynamicPressure) / density);
+     // Pitot tube formula: V = sqrt(2 * (totalPressure - staticPressure) / density)
+    double windSpeed = sqrt(2 * (totalPressure - staticPressure) / density);
      return windSpeed;
 }
 
-// Calculate air density
+// Function to calculate air density
 double calculateAirDensity(double temperatureC, double pressurePa, double humidity) {
-     const double R_d = 287.05;  // Specific gas constant for dry air, J/(kg·K)
-     const double R_v = 461.5;   // Specific gas constant for water vapor, J/(kg·K)
+    // Convert temperature to Kelvin
+    double temperatureK = temperatureC + 273.15;
 
-     // Convert temperature to Kelvin
-     double temperatureK = temperatureC + 273.15;
+    // Calculate partial pressure of water vapor (approximation using Tetens formula)
+    double saturationVaporPressure = 6.1078 * pow(10, (7.5 * temperatureC) / (temperatureC + 237.3)) * 100;
+    double actualVaporPressure = (humidity / 100.0) * saturationVaporPressure;
 
-     // Calculate saturation vapor pressure (e_s) in Pa
-     double e_s = 6.112 * exp((17.67 * temperatureC) / (temperatureC + 243.5)) * 100;
+    // Calculate air density
+    double Rd = 287.05; // Specific gas constant for dry air in J/(kg·K)
+    double Rv = 461.5;  // Specific gas constant for water vapor in J/(kg·K)
 
-     // Calculate actual vapor pressure (e) in Pa
-     double e = (humidity / 100.0) * e_s;
+    // Air density formula: ρ = (pd / (Rd * T)) + (e / (Rv * T))
+    double airDensity = (pressurePa - actualVaporPressure) / (Rd * temperatureK) + actualVaporPressure / (Rv * temperatureK);
 
-     // Calculate partial pressure of dry air (p_d) in Pa
-     double p_d = pressurePa - e;
-
-     // Calculate air density (rho) in kg/m³
-     double rho = (p_d / (R_d * temperatureK)) + (e / (R_v * temperatureK));
-
-     return rho;
+    return airDensity;
 }
