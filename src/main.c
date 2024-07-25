@@ -1,3 +1,25 @@
+/*
+ *	Copyright (c) 2020--2022, Signaloid.
+ *
+ *	Permission is hereby granted, free of charge, to any person obtaining a copy
+ *	of this software and associated documentation files (the "Software"), to deal
+ *	in the Software without restriction, including without limitation the rights
+ *	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *	copies of the Software, and to permit persons to whom the Software is
+ *	furnished to do so, subject to the following conditions:
+ *
+ *	The above copyright notice and this permission notice shall be included in all
+ *	copies or substantial portions of the Software.
+ *
+ *	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *	SOFTWARE.
+ */
+
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -5,12 +27,12 @@
 
 /*
  * Airfoil Lift Generation Model
- * 
+ *
  * This program models the lift generation of an airfoil using the Bernoulli equation and other physical principles.
  * It considers uncertainties in ambient temperature, humidity, and static air pressure to compute air density as a probability distribution.
  * The air density distribution is then used to compute the wind speed as a probability distribution using the Pitot Tube formula.
  * These distributions are used to compute the lift force as a probability distribution.
- * 
+ *
  * Lift Force Equation:
  * L = 0.5 * ρ * V^2 * C_L * A
  * where:
@@ -18,7 +40,7 @@
  * - V: Air velocity (m/s)
  * - C_L: Coefficient of lift (dimensionless)
  * - A: Wing area (m²)
- * 
+ *
  * Air Density Calculation:
  * ρ = (p_d / (R_d * T)) + (e / (R_v * T))
  * where:
@@ -27,7 +49,7 @@
  * - e: Actual vapor pressure (Pa)
  * - R_d: Specific gas constant for dry air (287.05 J/(kg·K))
  * - R_v: Specific gas constant for water vapor (461.5 J/(kg·K))
- * 
+ *
  * Wind Speed Calculation:
  * V = sqrt((2 * (total pressure - static pressure)) / ρ)
  */
@@ -100,25 +122,25 @@ int main() {
 // Function to calculate wind speed using the Pitot Tube formula
 double calculateWindSpeed(double totalPressure, double staticPressure, double density) {
      // Pitot tube formula: V = sqrt(2 * (totalPressure - staticPressure) / density)
-    double windSpeed = sqrt(2 * (totalPressure - staticPressure) / density);
+     double windSpeed = sqrt(2 * (totalPressure - staticPressure) / density);
      return windSpeed;
 }
 
 // Function to calculate air density
 double calculateAirDensity(double temperatureC, double pressurePa, double humidity) {
-    // Convert temperature to Kelvin
-    double temperatureK = temperatureC + 273.15;
+     // Convert temperature to Kelvin
+     double temperatureK = temperatureC + 273.15;
 
-    // Calculate partial pressure of water vapor (approximation using Tetens formula)
-    double saturationVaporPressure = 6.1078 * pow(10, (7.5 * temperatureC) / (temperatureC + 237.3)) * 100;
-    double actualVaporPressure = (humidity / 100.0) * saturationVaporPressure;
+     // Calculate partial pressure of water vapor (approximation using Tetens formula)
+     double saturationVaporPressure = 6.1078 * pow(10, (7.5 * temperatureC) / (temperatureC + 237.3)) * 100;
+     double actualVaporPressure = (humidity / 100.0) * saturationVaporPressure;
 
-    // Calculate air density
-    double Rd = 287.05; // Specific gas constant for dry air in J/(kg·K)
-    double Rv = 461.5;  // Specific gas constant for water vapor in J/(kg·K)
+     // Calculate air density
+     double Rd = 287.05;  // Specific gas constant for dry air in J/(kg·K)
+     double Rv = 461.5;   // Specific gas constant for water vapor in J/(kg·K)
 
-    // Air density formula: ρ = (pd / (Rd * T)) + (e / (Rv * T))
-    double airDensity = (pressurePa - actualVaporPressure) / (Rd * temperatureK) + actualVaporPressure / (Rv * temperatureK);
+     // Air density formula: ρ = (pd / (Rd * T)) + (e / (Rv * T))
+     double airDensity = (pressurePa - actualVaporPressure) / (Rd * temperatureK) + actualVaporPressure / (Rv * temperatureK);
 
-    return airDensity;
+     return airDensity;
 }
