@@ -30,7 +30,7 @@ $$
 
 where:
 - $T$ is the temperature in Kelvin (Coming from a data set)
-- $p_d$ is the partial pressure of dry air (Pa) (Coming from a data set)
+- $p_d$ is the partial pressure of dry air (Pa) (Dependent on the air pressure, Coming from a data set)
 - $e$ is the actual vapor pressure (Pa) - This is a function of the humidity (Coming from a data set)
 - $R_d$ is the specific gas constant for dry air $287.05$ $\frac{J}{kg·K}$
 - $R_v$ is the specific gas constant for water vapor $461.5$ $\frac{J}{kg·K}$)
