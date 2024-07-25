@@ -37,7 +37,7 @@ where:
 
 ### Wind Speed Calculation
 
-Wind speed $V$ is determined using:
+Wind speed $V$ is determined via a Pitot Tube, using:
 
 $$
 V = \sqrt{\frac{2 \times (\text{total pressure} - \text{static pressure})}{\rho}}
