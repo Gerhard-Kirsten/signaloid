@@ -91,18 +91,19 @@ int main() {
                                  88, 94, 94, 94, 94, 94, 94,  94, 94, 94, 94, 94, 87,  82, 77, 72, 59, 55, 68, 63, 63, 67, 72, 72, 77, 82, 82,  88,
                                  67, 77, 88, 88, 88, 87, 100, 88, 94, 94, 88, 88, 82,  77, 82, 88, 82, 88, 88, 88, 94, 94, 88, 94};
 
-     // Calculate average temperature, pressure, and humidity
+     // Generate distributions from the empirical data for temperature, pressure, and humidity
      double temperatureC = UxHwDoubleDistFromSamples(temperatureSamples, sizeof(temperatureSamples) / sizeof(double));
      double pressurePa = UxHwDoubleDistFromSamples(pressureSamples, sizeof(pressureSamples) / sizeof(double));
      double humidity = UxHwDoubleDistFromSamples(humiditySamples, sizeof(humiditySamples) / sizeof(double));
 
+     // Compute the air density as a distribution using the distributions defined above
      double airDensity = calculateAirDensity(temperatureC, pressurePa, humidity);
      printf("Air Density (Computed from Temp, Hum & Press): %lf kg/m³\n", airDensity);
 
      // Total Pressure (totalPressure)
      double totalPressure = UxHwDoubleUniformDist(104200, 104400);
 
-     // Calculate wind speed using a Pitot tube
+     // Calculate wind speed using a Pitot tube. All 3 variables are distributions defined and computed above
      double windSpeed = calculateWindSpeed(totalPressure, pressurePa, airDensity);
      printf("Wind Speed (Computed via Pitot Tube) = %lf m/s\n", windSpeed);
 
